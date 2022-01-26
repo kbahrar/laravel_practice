@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,6 @@ Route::get('/', function() {
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/posts', [PostController::class, 'store']);
+
+Route::post('/posts/{post}/like', [PostLikeController::class, 'store'])->name('posts.like');
+Route::post('/posts/{post}/dislike', [PostLikeController::class, 'destroy'])->name('posts.dislike');
